@@ -1,0 +1,11 @@
+DROP TABLE ParkingSpots;
+DROP TABLE Contracts; 
+DROP TABLE ContractDuration; 
+DROP TABLE RentPrice; 
+DROP TABLE ViewingAppointments;
+DROP TABLE Units;
+DROP TABLE BuildingAddresses;
+DROP TABLE Tenants;
+DROP TABLE Owners;
+DROP TABLE PropertyManagers;
+DROP TABLE PostalCodes;
