@@ -1,89 +1,89 @@
 CREATE TABLE PostalCodes (
-    PostalCode Char(10),
-    City Char(20),
+    PostalCode Varchar(10),
+    City Varchar(20),
     PRIMARY KEY (PostalCode) );
 
 CREATE TABLE PropertyManagers (
-    PropertyManagerID NUMBER,
-    PhoneNum Char(30),
-    Name Char(30),
+    PropertyManagerID int,
+    PhoneNum Varchar(30),
+    Name Varchar(30),
     PRIMARY KEY (PropertyManagerID) );
 
 CREATE TABLE Owners (
-    OwnerID NUMBER,
-    PhoneNum Char(30),
-    Name Char(30),
+    OwnerID int,
+    PhoneNum Varchar(30),
+    Name Varchar(30),
     PRIMARY KEY (OwnerID) );
 
 CREATE TABLE Tenants (
-    TenantID NUMBER,
-    PhoneNum Char(30),
-    Name Char(30),
+    TenantID int,
+    PhoneNum Varchar(30),
+    Name Varchar(30),
     PRIMARY KEY (TenantID) );
 
 CREATE TABLE BuildingAddresses (
-    BuildingID NUMBER,
-    PostalCode Char(10) NOT NULL,
-    StreetName Char(20) NOT NULL,
-    StreetNumber Char(10) NOT NULL,
-    PropertyManagerID NUMBER,
+    BuildingID int,
+    PostalCode Varchar(10) NOT NULL,
+    StreetName Varchar(20) NOT NULL,
+    Streetint Varchar(10) NOT NULL,
+    PropertyManagerID int,
     PRIMARY KEY (BuildingID),
-    FOREIGN KEY (PostalCode) REFERENCES PostalCodes,
-    FOREIGN KEY (PropertyManagerID) REFERENCES PropertyManagers );
+    FOREIGN KEY (PostalCode) REFERENCES PostalCodes(PostalCode),
+    FOREIGN KEY (PropertyManagerID) REFERENCES PropertyManagers(PropertyManagerID) );
 
 CREATE TABLE Units
-(   UnitID NUMBER,
-    UnitNum Char(10),
-    Bedrooms NUMBER,
-    Bathrooms NUMBER,
-    UnitSize NUMBER,
-    UnitType Char(10) CHECK( UnitType IN ('house','apartment')),
-    Backyard Char(1) CHECK( Backyard IN ('Y','N') ),
-    FloorNum NUMBER,
-    Gym Char(1) DEFAULT 'N',
-    BuildingID NUMBER NOT NULL,
-    OwnerID NUMBER NOT NULL,
+(   UnitID int,
+    UnitNum Varchar(10),
+    Bedrooms int,
+    Bathrooms int,
+    UnitSize int,
+    UnitType Varchar(10) CHECK( UnitType IN ('house','apartment')),
+    Backyard Varchar(1) CHECK( Backyard IN ('Y','N') ),
+    FloorNum int,
+    Gym Varchar(1) DEFAULT 'N',
+    BuildingID int NOT NULL,
+    OwnerID int NOT NULL,
     PRIMARY KEY (UnitID),
-    FOREIGN KEY (BuildingID) REFERENCES BuildingAddresses,
-    FOREIGN KEY (OwnerID) REFERENCES Owners );
+    FOREIGN KEY (BuildingID) REFERENCES BuildingAddresses(BuildingID),
+    FOREIGN KEY (OwnerID) REFERENCES Owners(OwnerID) );
 
 CREATE TABLE ViewingAppointments (
-    ApptID NUMBER,
-    Time DATE,
-    UnitID NUMBER NOT NULL,
-    PropertyManagerID NUMBER NOT NULL,
-    TenantID NUMBER NOT NULL,
+    ApptID int,
+    Time DATETIME,
+    UnitID int NOT NULL,
+    PropertyManagerID int NOT NULL,
+    TenantID int NOT NULL,
     PRIMARY KEY (ApptID),
-    FOREIGN KEY (PropertyManagerID) REFERENCES PropertyManagers,
-    FOREIGN KEY (UnitID) REFERENCES Units,
-    FOREIGN KEY (TenantID) REFERENCES Tenants );
+    FOREIGN KEY (PropertyManagerID) REFERENCES PropertyManagers(PropertyManagerID),
+    FOREIGN KEY (UnitID) REFERENCES Units(UnitID),
+    FOREIGN KEY (TenantID) REFERENCES Tenants(TenantID) );
 
 CREATE TABLE RentPrice (
-    RentPrice NUMBER,
-    Deposit NUMBER,
+    RentPrice int,
+    Deposit int,
     PRIMARY KEY (RentPrice) );
 
 CREATE TABLE ContractDuration (
-    Duration NUMBER,
+    Duration int,
     StartDate DATE,
     EndDate DATE,
     PRIMARY KEY (Duration, StartDate) );
 
 CREATE TABLE Contracts (
-    ContractID NUMBER,
-    RentPrice NUMBER NOT NULL,
-    Duration NUMBER,
+    ContractID int,
+    RentPrice int NOT NULL,
+    Duration int,
     StartDate Date NOT NULL,
-    UnitID NUMBER NOT NULL,
-    TenantID NUMBER NOT NULL,
+    UnitID int NOT NULL,
+    TenantID int NOT NULL,
     PRIMARY KEY (ContractID),
-    FOREIGN KEY (RentPrice) REFERENCES RentPrice,
-    FOREIGN KEY (Duration, StartDate) REFERENCES ContractDuration,
-    FOREIGN KEY (UnitID) REFERENCES Units,
-    FOREIGN KEY (TenantID) REFERENCES Tenants );
+    FOREIGN KEY (RentPrice) REFERENCES RentPrice(RentPrice),
+    FOREIGN KEY (Duration, StartDate) REFERENCES ContractDuration(Duration, StartDate),
+    FOREIGN KEY (UnitID) REFERENCES Units(UnitID),
+    FOREIGN KEY (TenantID) REFERENCES Tenants(TenantID) );
 
 CREATE TABLE ParkingSpots (
-    SpotNumber NUMBER,
-    UnitID NUMBER,
-    PRIMARY KEY (SpotNumber,UnitID),
-    FOREIGN KEY (UnitID) REFERENCES Units );
+    Spotint int,
+    UnitID int,
+    PRIMARY KEY (Spotint,UnitID),
+    FOREIGN KEY (UnitID) REFERENCES Units(UnitID) );

@@ -34,11 +34,11 @@ INSERT INTO Units VALUES (3, '701',  1,1,600, 'apartment', 'N',   7,      'Y',  
 INSERT INTO Units VALUES (4, '101-B',5,3,5400,'house',     'Y',   NULL,   NULL,   2, 9);
 INSERT INTO Units VALUES (5, '405',  5,3,3400,'house',     'N',   NULL,   NULL,   1, 10);
 
-INSERT INTO ViewingAppointments VALUES ( 2,  TO_DATE('12:30 02-01-2020', 'HH24:MI MM-DD-YYYY'), 1, 1, 12);
-INSERT INTO ViewingAppointments VALUES ( 20, TO_DATE('10:00 03-01-2020', 'HH24:MI MM-DD-YYYY'), 4, 2, 11);
-INSERT INTO ViewingAppointments VALUES ( 12, TO_DATE('14:00 04-01-2020', 'HH24:MI MM-DD-YYYY'), 3, 3, 11);
-INSERT INTO ViewingAppointments VALUES ( 29, TO_DATE('17:00 05-11-2020', 'HH24:MI MM-DD-YYYY'), 5, 4, 12);
-INSERT INTO ViewingAppointments VALUES ( 99, TO_DATE('14:10 05-01-2020', 'HH24:MI MM-DD-YYYY'), 1, 5, 13);
+INSERT INTO ViewingAppointments VALUES ( 2,  STR_TO_DATE('12:30 02-01-2020', '%H:%i %m-%d-%Y'), 1, 1, 12);
+INSERT INTO ViewingAppointments VALUES ( 20, STR_TO_DATE('10:00 03-01-2020', '%H:%i %m-%d-%Y'), 4, 2, 11);
+INSERT INTO ViewingAppointments VALUES ( 12, STR_TO_DATE('14:00 04-01-2020', '%H:%i %m-%d-%Y'), 3, 3, 11);
+INSERT INTO ViewingAppointments VALUES ( 29, STR_TO_DATE('17:00 05-11-2020', '%H:%i %m-%d-%Y'), 5, 4, 12);
+INSERT INTO ViewingAppointments VALUES ( 99, STR_TO_DATE('14:10 05-01-2020', '%H:%i %m-%d-%Y'), 1, 5, 13);
 
 INSERT INTO RentPrice VALUES (1200, 600);
 INSERT INTO RentPrice VALUES (1500, 750);
@@ -46,17 +46,17 @@ INSERT INTO RentPrice VALUES (3600, 1800);
 INSERT INTO RentPrice VALUES (1700, 850);
 INSERT INTO RentPrice VALUES (1900, 950);
 
-INSERT INTO ContractDuration VALUES (24, TO_DATE('12-01-2020', 'MM-DD-YYYY'), TO_DATE('11-30-2022', 'MM-DD-YYYY'));
-INSERT INTO ContractDuration VALUES (12, TO_DATE('11-01-2021', 'MM-DD-YYYY'), TO_DATE('10-31-2022', 'MM-DD-YYYY'));
-INSERT INTO ContractDuration VALUES (12, TO_DATE('04-01-2021', 'MM-DD-YYYY'), TO_DATE('03-30-2022', 'MM-DD-YYYY'));
-INSERT INTO ContractDuration VALUES (12, TO_DATE('05-01-2020', 'MM-DD-YYYY'), TO_DATE('04-30-2021', 'MM-DD-YYYY'));
-INSERT INTO ContractDuration VALUES (6,  TO_DATE('05-01-2020', 'MM-DD-YYYY'), TO_DATE('10-30-2021', 'MM-DD-YYYY'));
+INSERT INTO ContractDuration VALUES (24, STR_TO_DATE('12-01-2020', '%m-%d-%Y'), STR_TO_DATE('11-30-2022', '%m-%d-%Y'));
+INSERT INTO ContractDuration VALUES (12, STR_TO_DATE('11-01-2021', '%m-%d-%Y'), STR_TO_DATE('10-31-2022', '%m-%d-%Y'));
+INSERT INTO ContractDuration VALUES (12, STR_TO_DATE('04-01-2021', '%m-%d-%Y'), STR_TO_DATE('03-30-2022', '%m-%d-%Y'));
+INSERT INTO ContractDuration VALUES (12, STR_TO_DATE('05-01-2020', '%m-%d-%Y'), STR_TO_DATE('04-30-2021', '%m-%d-%Y'));
+INSERT INTO ContractDuration VALUES (6,  STR_TO_DATE('05-01-2020', '%m-%d-%Y'), STR_TO_DATE('10-30-2021', '%m-%d-%Y'));
 
-INSERT INTO Contracts VALUES ( 1, 1200, 24, TO_DATE('12-01-2020', 'MM-DD-YYYY'), 1, 11);
-INSERT INTO Contracts VALUES ( 2, 1500, 12, TO_DATE('11-01-2021', 'MM-DD-YYYY'), 2, 12);
-INSERT INTO Contracts VALUES ( 3, 3600, 12, TO_DATE('04-01-2021', 'MM-DD-YYYY'), 3, 13);
-INSERT INTO Contracts VALUES ( 4, 1700, 12, TO_DATE('05-01-2020', 'MM-DD-YYYY'), 4, 14);
-INSERT INTO Contracts VALUES ( 5, 1900, 6,  TO_DATE('05-01-2020', 'MM-DD-YYYY'), 5, 15);
+INSERT INTO Contracts VALUES ( 1, 1200, 24, STR_TO_DATE('12-01-2020', '%m-%d-%Y'), 1, 11);
+INSERT INTO Contracts VALUES ( 2, 1500, 12, STR_TO_DATE('11-01-2021', '%m-%d-%Y'), 2, 12);
+INSERT INTO Contracts VALUES ( 3, 3600, 12, STR_TO_DATE('04-01-2021', '%m-%d-%Y'), 3, 13);
+INSERT INTO Contracts VALUES ( 4, 1700, 12, STR_TO_DATE('05-01-2020', '%m-%d-%Y'), 4, 14);
+INSERT INTO Contracts VALUES ( 5, 1900, 6,  STR_TO_DATE('05-01-2020', '%m-%d-%Y'), 5, 15);
 
 INSERT INTO ParkingSpots VALUES (1,  2);
 INSERT INTO ParkingSpots VALUES (3,  5);
