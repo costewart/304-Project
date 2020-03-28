@@ -1,8 +1,12 @@
+
 <html>
     <head>
-
+        <script type="text/javascript" src="/js/appointment.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/common.css" media="screen"/>
     </head>
     <body>
+        <?php $activeTab = 3;
+        include('../app/View/header.php');  ?>
         <h1>Viewing Appointments Listing</h1>
         <table>
             <thead>
@@ -24,6 +28,9 @@
                     <td><?= $appointment["UnitID"] ?></td>
                     <td><?= $appointment["PropertyManagerID"] ?></td>
                     <td><?= $appointment["TenantID"] ?></td>
+                    <td> <button onclick="deleteAppointment()">Delete</button>
+
+                    </td>
                 </tr>
             <?php endforeach;?>
             </tbody>
