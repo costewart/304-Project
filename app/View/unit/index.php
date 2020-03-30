@@ -1,17 +1,19 @@
 
 <html>
     <head>
+        <script type="text/javascript" src="/js/units.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/common.css" media="screen"/>
     </head>
     <body>
         <?php $activeTab = 0;
         include('../app/View/header.php');  ?>
+        <input type="text" id= "mySearch" onkeyup="searchAddress()" placeholder="Search for units...">
         <h1>Unit Listing</h1>
-        <table>
+        <table id="unitTable">
             <thead>
                 <tr>
-                    <th>Address</th>
-                    <th>Postal Code</th>
+                    <th style="width:30%;">Address</th>
+                    <th style="width:15%;">Postal Code</th>
                     <th>Unit Type</th>
                     <th>Square Feet</th>
                     <th>Floor Number</th>
@@ -36,6 +38,10 @@
             <?php endforeach;?>
             </tbody>
         </table>
+
+        
+   
+
 
     </body>
 </html>

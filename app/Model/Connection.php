@@ -7,7 +7,7 @@ class Connection
         $dbhost = "localhost";
         $dbuser = "root";
         $dbpass = "root";
-        $db = "HousingHelper";
+        $db = "houseHelper";
         $conn = new mysqli($dbhost, $dbuser,
             $dbpass, $db) or die("Connect failed: %s\n" .
             $conn->error);
@@ -19,5 +19,7 @@ class Connection
         $conn->close();
     }
 }
+
+
 
 
