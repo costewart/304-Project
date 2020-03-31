@@ -1,3 +1,7 @@
+<?php
+    include_once '../app/Model/Connection.php';
+    include_once '../app/Model/Unit.php';
+?>
 
 <html>
     <head>
@@ -5,10 +9,22 @@
         <link rel="stylesheet" type="text/css" href="/css/common.css" media="screen"/>
     </head>
     <body>
-        <?php $activeTab = 0;
-        include('../app/View/header.php');  ?>
-        <input type="text" id= "mySearch" onkeyup="searchAddress()" placeholder="Search for units...">
-        <h1>Unit Listing</h1>
+        <?php
+            $users = new Unit();
+            $bath = 3400;
+            $users->showAllUnits();
+        ?>
+        <form action="index.php" method="post">
+            <input type="text" name="search" placeholder="Search for units..."/>
+            <input type="submit" value=">>" />
+        </form>
+
+    </body>
+</html>
+        
+        <!-- <h1>Unit Listing</h1>
+        <h2> All Units: </h2>
+
         <table id="unitTable">
             <thead>
                 <tr>
@@ -44,4 +60,4 @@
 
 
     </body>
-</html>
+</html> -->
