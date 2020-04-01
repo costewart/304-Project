@@ -27,12 +27,18 @@ INSERT INTO BuildingAddresses VALUES (2, 'V1G 0X9', 'NO 3 Road', '1301', 3 );
 INSERT INTO BuildingAddresses VALUES (3, 'V1G 8X9', 'Garden City Road', '7888', 2 );
 INSERT INTO BuildingAddresses VALUES (4, 'V9G 0X9', 'NO 5 Road', '101', 5 );
 INSERT INTO BuildingAddresses VALUES (5, 'V1G 4X9', 'NO 3 Road', '405', 4 );
+INSERT INTO BuildingAddresses VALUES (6, 'V1G 4X9', 'NO 3 Road', '407', 4 );
 
-INSERT INTO Units VALUES (1, '201',  2,1,900, 'apartment', 'N',   2,      'Y',    5, 6);
-INSERT INTO Units VALUES (2, '1',    5,3,3400,'house',     'Y',   NULL,   'N',    4, 7);
-INSERT INTO Units VALUES (3, '701',  1,1,600, 'apartment', 'N',   7,      'Y',    3, 8);
-INSERT INTO Units VALUES (4, '101-B',5,3,5400,'house',     'Y',   NULL,   NULL,   2, 9);
-INSERT INTO Units VALUES (5, '405',  5,3,3400,'house',     'N',   NULL,   NULL,   1, 10);
+INSERT INTO Units VALUES (1, '201', 2,1,900, 'apartment', 'N',   2,      'Y',    5, 6);
+INSERT INTO Units VALUES (2, '1',   5,3,3400,'house',     'Y',   NULL,   'N',    4, 7);
+INSERT INTO Units VALUES (3, '701', 1,1,600, 'apartment', 'N',   7,      'Y',    3, 8);
+INSERT INTO Units VALUES (4, '101', 5,3,5400,'house',     'Y',   NULL,   NULL,   2, 9);
+INSERT INTO Units VALUES (5, '1',   5,3,3400,'house',     'N',   NULL,   NULL,   1, 10);
+INSERT INTO Units VALUES (6, '101', 1,1,500, 'apartment', 'N',   20,     'Y',    5, 6);
+INSERT INTO Units VALUES (7, '1',   4,2,2400,'house',     'N',   NULL,   'N',    6, 7);
+INSERT INTO Units VALUES (8, '300', 1,1,600, 'apartment', 'N',   7,      'Y',    3, 8);
+INSERT INTO Units VALUES (9, '4',   2,1,750, 'apartment', 'N',   12,    NULL,    5, 9);
+INSERT INTO Units VALUES (10,'1',   2,2,800, 'apartment', 'N',   1,     NULL,    3, 8);
 
 INSERT INTO ViewingAppointments VALUES ( 2,  STR_TO_DATE('12:30 02-01-2020', '%H:%i %m-%d-%Y'), 1, 1, 12);
 INSERT INTO ViewingAppointments VALUES ( 20, STR_TO_DATE('10:00 03-01-2020', '%H:%i %m-%d-%Y'), 4, 2, 11);
