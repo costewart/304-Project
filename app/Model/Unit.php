@@ -1,77 +1,64 @@
 <?php
 
 require_once 'Connection.php';
-class Unit extends Connection
+class Unit
 {
-    // protected $conn;
-    // protected $connection;
+    protected $conn;
+    protected $connection;
 
-    // public function __construct() {
-    //     $conn = new Connection();
-    //     $this->connection = $conn->openConnection();
-    // }
+    public function __construct() {
+        $conn = new Connection();
+        $this->connection = $conn->openConnection();
+    }
 
-    // get all data from the database
     public function getAllUnits() {
         $sql = "SELECT * FROM Units";
-        $results = $this->openConnection()->query($sql);
-
-        $numRows = $results->num_rows;
-        if ($numRows > 0) {
-            while ($row = $results->fetch_assoc()) {
-                $data[] = $row;
-            }
-            //return $data;
-        }
+        $results = $this->connection->query($sql);
         return $results;
     }
 
-    // show all data
-    public function showAllUnits() {
-        $datas = $this->getAllUnits();
-        
-        $numberRows = mysqli_num_rows($datas);
-        
-        if($numberRows > 0) {
-            echo '<table>';
-                echo '<tr>';
-                echo '  <th> UnitID </th>';
-                echo '  <th> Bedrooms </th>';
-                echo '  <th> Bathrooms </th>';
-                echo '</tr>';  
-
-        while ($Row = mysqli_fetch_assoc($datas)) {
-
-        echo '<tr><td>' . $Row['UnitID'] . '</td><td>' . $Row['Bedrooms'] . '</td><td>' . $Row['Bathrooms'] . '</td></tr>';
-        }
-        echo '</table>';
-    }
-}
-
-    public function getUnitsStmt($bed) {
-        $sql = "SELECT * FROM Units WHERE UnitSize = ?";
-        $stmt = mysqli_stmt_init($this->openConnection());
-        if (!mysqli_stmt_prepare($stmt, $sql)) {
-            echo "SQL statement failed";
-        } else {
-            // bind parameters to the placeholders
-            mysqli_stmt_bind_param($stmt, "s", $bed);
-            // run parameters inside database
-            mysqli_stmt_execute($stmt);
-            $result = mysqli_stmt_get_result($stmt);
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo $row['UnitID']."<br>";
-                echo $row['UnitSize']."<br>";
-                echo $row['Bathrooms']."<br>";
-            }
-        }
-
-    }
-
     public function getAllUnitsWithAddresses() {
-        // $sql = "SELECT * FROM Units u, BuildingAddresses ba WHERE u.BuildingID = ba.BuildingID";
-        // $results = $this->query($sql);
-        // return $results;
+        $sql = "SELECT * FROM Units u, BuildingAddresses ba WHERE u.BuildingID = ba.BuildingID";
+        $results = $this->connection->query($sql);
+        return $results;
+    }
+
+    public function filterUnits($type_apt, $type_house, $size, $bed, $bath, $availability) {
+        $apt_clause = empty($type_apt) ? " AND u.UnitType != \"apartment\"" : "";
+        $house_clause = empty($type_house) ? " AND u.UnitType != \"house\"" : "";
+
+        $size_clause = "";
+        if (!empty($size[0])) $size_clause = $size_clause . " AND u.UnitSize >= $size[0]";
+        if (!empty($size[1])) $size_clause = $size_clause . " AND u.UnitSize <= $size[1]";
+
+        $bed_clause = "";
+        if (!empty($bed[0])) $bed_clause = $bed_clause . " AND u.Bedrooms >= $bed[0]";
+        if (!empty($bed[1])) $bed_clause = $bed_clause . " AND u.Bedrooms <= $bed[1]";
+
+        $bath_clause = "";
+        if (!empty($bath[0])) $bath_clause = $bath_clause . " AND u.Bathrooms >= $bath[0]";
+        if (!empty($bath[1])) $bath_clause = $bath_clause . " AND u.Bathrooms <= $bath[1]";
+
+        // TODO: Make this filter for only contracts started before today and ending after today...
+        // (Right now it filters out any unit that has a Contract associated with it)
+        $avail_join = "";
+        if ($availability == "avail") $avail_join = " LEFT JOIN Contracts c ON c.UnitID = u.UnitID";
+        $avail_clause = "";
+        if ($availability == "avail") $avail_clause = " AND c.UnitID IS NULL";
+
+        $sql = "SELECT ba.Streetint, ba.StreetName, ba.PostalCode, u.UnitType, u.UnitSize, u.FloorNum, u.UnitNum, u.Bedrooms, u.Bathrooms
+                FROM BuildingAddresses ba, Units u
+                $avail_join
+                WHERE u.BuildingID = ba.BuildingID
+                $apt_clause
+                $house_clause
+                $size_clause
+                $bed_clause
+                $bath_clause
+                $avail_clause";
+
+        $results = $this->connection->query($sql);
+        return $results;
     }
 
 }

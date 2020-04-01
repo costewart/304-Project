@@ -1,3 +1,4 @@
+  
 <?php
 class UnitController extends Controller
 {
@@ -15,6 +16,13 @@ class UnitController extends Controller
         ]);
     }
 
-
-   
+    public function action() {
+        $apt = isset($_POST['type-apt']) ? $_POST['type-apt'] : "";
+        $house = isset($_POST['type-house']) ? $_POST['type-house'] : "";
+        $units = $this->model->filterUnits($apt, $house, $_POST["size"],
+                                            $_POST["bed"], $_POST["bath"], $_POST["availability"]);
+        $this->view('unit/index', [
+            "units" => $units
+         ]);
+    }
 }
