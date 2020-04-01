@@ -11,7 +11,7 @@ class Unit extends Connection
     //     $this->connection = $conn->openConnection();
     // }
 
-    // get all data from Units
+    // get all data from the database
     public function getAllUnits() {
         $sql = "SELECT * FROM Units";
         $results = $this->openConnection()->query($sql);
@@ -31,6 +31,7 @@ class Unit extends Connection
         $datas = $this->getAllUnits();
         
         $numberRows = mysqli_num_rows($datas);
+        
         if($numberRows > 0) {
             echo '<table>';
                 echo '<tr>';
