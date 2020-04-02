@@ -26,4 +26,15 @@ class TenantController extends Controller
             "tenants" => $tenants
          ]);
     }
+
+    public function actionTwo() {
+
+        // $id = $_POST["id"];
+        // $pname = $_POST["pname"];
+        // $phonenum = $_POST["phonenum"];
+        $tenants = $this->model->updateTenant();
+        $this->view('tenant/index', [
+            "tenants" => $tenants
+         ]);
+    }
 }

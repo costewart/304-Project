@@ -31,23 +31,21 @@ class Tenant
 
         $results = $this->getAllTenants();
         return $results;
-
-
-
     }
 
-//    public function updateTenant() {
-//        $conn = new Connection();
-//        $connection = $conn->openConnection();
+   public function updateTenant() {
        
-//        // UPDATE
-//        $sql = "UPDATE Tenants SET Tenants.Name='$_POST[pname]', Tenants.PhoneNum='$_POST[phonenum]' WHERE Tenants.TenantID='$_POST[id]'";
+       // UPDATE sql string
+       $sql = "UPDATE Tenants SET Name='$_POST[pname]', PhoneNum='$_POST[phonenum]' WHERE TenantID='$_POST[id]'";
 
-//         // Excecut query
-//         if (mysqli_query($connection, $sql))
-//             header("refresh:1; url=../View/tenant/index.php");
-//         else
-//             echo "not updated";
-//    }
-
+       if ($this->connection->query($sql) === TRUE) {
+        echo "Tenant updated successfully";
+        } else {
+        echo "Error: " . $sql . "<br>" . $this->connection->error;
+        }
+        
+        $results = $this->getAllTenants();
+        return $results;
+        
+    }
 }

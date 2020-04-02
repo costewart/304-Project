@@ -8,7 +8,7 @@
         <?php $activeTab = 1;
         include('../app/View/header.php');  ?>
         <h1>Tenants</h1>
-        <table>
+        <table class="units-table">
             <thead>
                 <tr>
                     <th>Name </th>
@@ -21,12 +21,12 @@
                 <?php
                 if (is_array($data) || is_object($data)) {
                 foreach ($data["tenants"] as $key => $tenant) {
-                    echo "<tr><form method='post' action='update.php'>";
+                    echo "<tr><form method='post' action='/Tenant/actionTwo'>";
                     echo "<td><input type=text name='pname' value='".$tenant["Name"]."'</td>";
                     echo "<td><input type=text name='phonenum' value='".$tenant['PhoneNum']."'</td>";
                     echo "<td><input type=text name='id' value='".$tenant['TenantID']."'</td>";
                    // echo "<input type=hidden name=tid value='".$tenant['TenantID']."'>";
-                    echo "<td><input type=submit>";
+                    echo "<td><input type=submit value='Update'>";
                     echo "</form></tr>";
                 }
             }
