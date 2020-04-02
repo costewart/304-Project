@@ -13,20 +13,25 @@ class Tenant
     }
 
     public function getAllTenants() {
-        $conn = new Connection();
-        $connection = $conn->openConnection();
+    
         $sql = "SELECT * FROM Tenants";
-        $results = $connection->query($sql);
+        $results = $this->connection->query($sql);
         return $results;
     }
 
 
-    public function insertTenant($table_name, $data) {
-        $string = "INSERT INTO ".$table_name." (";
-        $string .= implode(",", array_keys($data)) . ') VALUES (';
-        $string .= "'" . implode("','", array_values($data)) . "')";
+    public function insertTenant($id, $pname, $phonenum) {
+        $int = (int)$id;
+        $sql = "INSERT INTO Tenants (TenantID, PhoneNum, Name) VALUES ('$int', '$phonenum', '$pname')";
+        if ($this->connection->query($sql) === TRUE) {
+            echo "New record created successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . $this->connection->error;
+        }
 
-        return $string;
+        $results = $this->getAllTenants();
+        return $results;
+
 
 
     }

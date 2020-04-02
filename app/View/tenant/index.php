@@ -19,15 +19,17 @@
             <tbody>
            
                 <?php
+                if (is_array($data) || is_object($data)) {
                 foreach ($data["tenants"] as $key => $tenant) {
                     echo "<tr><form method='post' action='update.php'>";
                     echo "<td><input type=text name='pname' value='".$tenant["Name"]."'</td>";
                     echo "<td><input type=text name='phonenum' value='".$tenant['PhoneNum']."'</td>";
-                    echo "<td><input type=text name='tid' value='".$tenant['TenantID']."'</td>";
+                    echo "<td><input type=text name='id' value='".$tenant['TenantID']."'</td>";
                    // echo "<input type=hidden name=tid value='".$tenant['TenantID']."'>";
                     echo "<td><input type=submit>";
                     echo "</form></tr>";
                 }
+            }
                 ?>
 
             </tbody>
@@ -37,9 +39,13 @@
 <div>
 <h1>Insert New Tenant</h1>
 <form name="form" method="post" action="/Tenant/action"> 
+<label> Tenant ID </label>
+
+<input type="text" name="id" placeholder="Enter ID" required />
+
 <label> Name </label>
 
-<input type="text" name="name" placeholder="Enter Name" required />
+<input type="text" name="pname" placeholder="Enter Name" required />
 <label> Phone Number </label>
 <input type="text" name="phonenum" placeholder="Enter Phone Number" required />
 <p><input name="submit" type="submit" value="Submit" /></p>

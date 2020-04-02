@@ -17,7 +17,11 @@ class TenantController extends Controller
     }
 
     public function action() {
-        $tenants = $this->model->insertTenant($table_name, $data);
+
+        $id = $_POST["id"];
+        $pname = $_POST["pname"];
+        $phonenum = $_POST["phonenum"];
+        $tenants = $this->model->insertTenant($id, $pname, $phonenum);
         $this->view('tenant/index', [
             "tenants" => $tenants
          ]);
