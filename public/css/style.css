@@ -62,10 +62,12 @@ tr:hover {
 
 .del_btn {
     text-decoration: none;
-    padding: 2px 5px;
-    color: white;
-    border-radius: 3px;
     background: #800000;
+    padding: 10px;
+    font-size: 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
 .msg {
     margin: 30px auto; 

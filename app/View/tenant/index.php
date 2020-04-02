@@ -53,6 +53,7 @@
                    // echo "<input type=hidden name=tid value='".$tenant['TenantID']."'>";
                  
                     echo "<td><div class='input-group'><button class='btn-char' name='submit' type=submit>Update</button></div></td>";
+                    echo "<td><div class='input-group'><button class='del_btn' name='submit' type=submit>Delete</button></div></td>";
                     echo "</form></tr>";
                 }
             }
