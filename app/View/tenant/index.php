@@ -45,15 +45,15 @@
                 <?php
                 if (is_array($data) || is_object($data)) {
                 foreach ($data["tenants"] as $key => $tenant) {
-                    echo "<tr><form method='post' action='/Tenant/actionTwo'>";
+                    echo "<tr><form method='post' >";
      
                     echo "<td><div class='input-group'><input type=text name='pname' value='".$tenant["Name"]."'</div></td>";
                     echo "<td><div class='input-group'><input type=text name='phonenum' value='".$tenant['PhoneNum']."'</div></td>";
                     echo "<td><div class='input-group'><input type=text name='id' value='".$tenant['TenantID']."'</div></td>";
                    // echo "<input type=hidden name=tid value='".$tenant['TenantID']."'>";
                  
-                    echo "<td><div class='input-group'><button class='btn-char' name='submit' type=submit>Update</button></div></td>";
-                    echo "<td><div class='input-group'><button class='del_btn' name='submit' type=submit>Delete</button></div></td>";
+                    echo "<td><div class='input-group'><button formaction='/Tenant/actionTwo' class='btn-char' name='update' type=submit>Update</button></div></td>";
+                    echo "<td><div class='input-group'><button formaction='/Tenant/actionThree' class='del_btn' name='delete' type=submit>Delete</button></div></td>";
                     echo "</form></tr>";
                 }
             }

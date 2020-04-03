@@ -28,12 +28,30 @@ class TenantController extends Controller
     }
 
     public function actionTwo() {
-
-        // $id = $_POST["id"];
-        // $pname = $_POST["pname"];
-        // $phonenum = $_POST["phonenum"];
         $tenants = $this->model->updateTenant();
         $this->view('tenant/index', [
+            "tenants" => $tenants
+         ]);
+    }
+
+    public function actionThree() {
+        $tenants = $this->model->deleteTenant();
+        $this->view('tenant/index', [
+            "tenants" => $tenants
+         ]);
+    }
+
+    public function chooseButton() {
+    
+         if($_POST['update']) {
+            $tenants = $this->model->updateTenant();
+          } else {
+          if($_POST['delete']) {
+            $tenants = $this->model->deleteTenant();
+          }
+        }
+
+          $this->view('tenant/index', [
             "tenants" => $tenants
          ]);
     }

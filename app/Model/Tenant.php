@@ -45,7 +45,22 @@ class Tenant
         }
         
         $results = $this->getAllTenants();
-        return $results;
-        
+        return $results; 
     }
+
+    public function deleteTenant() {
+       
+        // UPDATE sql string
+        $sql = "DELETE FROM Tenants WHERE TenantID='$_POST[id]'";
+ 
+        if ($this->connection->query($sql) === TRUE) {
+         echo "Tenant deleted successfully";
+         } else {
+         echo "Error: " . $sql . "<br>" . $this->connection->error;
+         }
+         
+         $results = $this->getAllTenants();
+         return $results;
+         
+     }
 }
