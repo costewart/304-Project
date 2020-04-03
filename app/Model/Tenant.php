@@ -56,7 +56,8 @@ class Tenant
         if ($this->connection->query($sql) === TRUE) {
          echo "Tenant deleted successfully";
          } else {
-         echo "Error: " . $sql . "<br>" . $this->connection->error;
+         //echo "Error: " . $sql . "<br>" . $this->connection->error;
+         echo "<script type='text/javascript'>alert('Tenant is involved in a Rent Contract - cannot be deleted')</script>";
          }
          
          $results = $this->getAllTenants();
