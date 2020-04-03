@@ -16,5 +16,23 @@ class Owner
         return $results;
     }
 
+    public function getOwnersWithUnitType($unit_type) {
+        $sql = "Select * 
+                From Owners O
+                Where Not Exists
+	                (Select UnitID
+	                From Units u1 WHERE u1.OwnerID = O.OwnerID
+	                NOT IN 
+	                (Select UnitID
+	                From Units u2 WHERE u2.OwnerID = O.OwnerID
+	                AND u2.UnitType = '$unit_type'));";
+        $results = $this->connection->query($sql);
+        return $results;
+
+
+
+    }
+
+
 
 }
