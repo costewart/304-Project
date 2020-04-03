@@ -68,6 +68,7 @@
                     <th>Unit Number</th>
                     <th>Bedrooms</th>
                     <th>Bathrooms</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -82,6 +83,12 @@
                     <td><?= $unit["UnitNum"] ?></td>
                     <td><?= $unit["Bedrooms"] ?></td>
                     <td><?= $unit["Bathrooms"] ?></td>
+                    <td >
+                        <form action="/Unit/deleteUnit" method="post">
+                            <input name='unit_id' value='<?= $unit["UnitID"]?>' style='display:none'/>
+                            <input class='action' type='submit' value='delete'/>
+                        </form>
+                    </td>
                 </tr>
             <?php endforeach;?>
             </tbody>

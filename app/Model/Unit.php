@@ -61,4 +61,15 @@ class Unit
         return $results;
     }
 
+    public function deleteUnitCascading($unitID) {
+        $sql1 = "DELETE FROM ViewingAppointments WHERE UnitID = $unitID";
+        $sql2 = "DELETE FROM Contracts WHERE UnitID=$unitID";
+        $sql3 = "DELETE FROM ParkingSpots WHERE UnitID=$unitID";
+        $sql4 = "DELETE FROM Units WHERE UnitID=$unitID";
+        $this->connection->query($sql1);
+        $this->connection->query($sql2);
+        $this->connection->query($sql3);
+        $this->connection->query($sql4);
+    }
+
 }

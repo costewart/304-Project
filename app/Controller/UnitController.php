@@ -15,7 +15,7 @@ class UnitController extends Controller
         ]);
     }
 
-    public function action() {
+        public function action() {
         $apt = isset($_POST['type-apt']) ? $_POST['type-apt'] : "";
         $house = isset($_POST['type-house']) ? $_POST['type-house'] : "";
         $units = $this->model->filterUnits($apt, $house, $_POST["size"],
@@ -23,5 +23,14 @@ class UnitController extends Controller
         $this->view('unit/index', [
             "units" => $units
          ]);
+    }
+
+    public function deleteUnit() {
+        $unitID = ($_POST['unit_id']);
+        $this->model->deleteUnitCascading($unitID);
+        $units = $this->model->getAllUnitsWithAddresses();
+        $this->view('unit/index', [
+            "units" => $units
+        ]);
     }
 }
