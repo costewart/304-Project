@@ -3,9 +3,11 @@
 }
 .tenant-table{
     width: 50%;
-    margin: 30px auto;
     border-collapse: collapse;
     text-align: left;
+    border: 1px solid darkgray;
+    margin: 10px;
+    padding: 3px;
 }
 tr {
     border-bottom: 1px solid #cbcbcb;
@@ -48,14 +50,14 @@ tr:hover {
     padding: 10px;
     font-size: 15px;
     color: white;
-    background: #5F9EA0;
+    background: #4CAF50;
     border: none;
     border-radius: 5px;
 }
 .edit_btn {
     text-decoration: none;
     padding: 2px 5px;
-    background: #2E8B57;
+    background: #4CAF50;
     color: white;
     border-radius: 3px;
 }
@@ -73,9 +75,10 @@ tr:hover {
     margin: 30px auto; 
     padding: 10px; 
     border-radius: 5px; 
-    color: #3c763d; 
+    color: #4CAF50; 
     background: #dff0d8; 
-    border: 1px solid #3c763d;
+    border: 1px solid #4CAF50;
     width: 50%;
     text-align: center;
 }
+

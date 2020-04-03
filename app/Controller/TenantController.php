@@ -16,42 +16,27 @@ class TenantController extends Controller
         ]);
     }
 
-    public function action() {
+    public function insert() {
 
-        $id = $_POST["id"];
+        //$id = $_POST["tid"];
         $pname = $_POST["pname"];
         $phonenum = $_POST["phonenum"];
-        $tenants = $this->model->insertTenant($id, $pname, $phonenum);
+        $tenants = $this->model->insertTenant(NULL, $pname, $phonenum);
         $this->view('tenant/index', [
             "tenants" => $tenants
          ]);
     }
 
-    public function actionTwo() {
+    public function update() {
         $tenants = $this->model->updateTenant();
         $this->view('tenant/index', [
             "tenants" => $tenants
          ]);
     }
 
-    public function actionThree() {
+    public function delete() {
         $tenants = $this->model->deleteTenant();
         $this->view('tenant/index', [
-            "tenants" => $tenants
-         ]);
-    }
-
-    public function chooseButton() {
-    
-         if($_POST['update']) {
-            $tenants = $this->model->updateTenant();
-          } else {
-          if($_POST['delete']) {
-            $tenants = $this->model->deleteTenant();
-          }
-        }
-
-          $this->view('tenant/index', [
             "tenants" => $tenants
          ]);
     }
