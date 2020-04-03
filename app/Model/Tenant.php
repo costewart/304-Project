@@ -21,8 +21,8 @@ class Tenant
 
 
     public function insertTenant($id, $pname, $phonenum) {
-        $int = (int)$id;
-        $sql = "INSERT INTO Tenants (TenantID, PhoneNum, Name) VALUES ('$int', '$phonenum', '$pname')";
+        //$int = (int)$id;
+        $sql = "INSERT INTO Tenants (TenantID, PhoneNum, Name) VALUES (NULL, '$phonenum', '$pname')";
         if ($this->connection->query($sql) === TRUE) {
             echo "New record created successfully";
         } else {
@@ -36,7 +36,7 @@ class Tenant
    public function updateTenant() {
        
        // UPDATE sql string
-       $sql = "UPDATE Tenants SET Name='$_POST[pname]', PhoneNum='$_POST[phonenum]' WHERE TenantID='$_POST[id]'";
+       $sql = "UPDATE Tenants SET Name='$_POST[pname]', PhoneNum='$_POST[phonenum]' WHERE TenantID='$_POST[tid]'";
 
        if ($this->connection->query($sql) === TRUE) {
         echo "Tenant updated successfully";
@@ -51,12 +51,13 @@ class Tenant
     public function deleteTenant() {
        
         // UPDATE sql string
-        $sql = "DELETE FROM Tenants WHERE TenantID='$_POST[id]'";
+        $sql = "DELETE FROM Tenants WHERE TenantID='$_POST[tid]'";
  
         if ($this->connection->query($sql) === TRUE) {
          echo "Tenant deleted successfully";
          } else {
-         echo "Error: " . $sql . "<br>" . $this->connection->error;
+         //echo "Error: " . $sql . "<br>" . $this->connection->error;
+         echo "<script type='text/javascript'>alert('Tenant is involved in a Rent Contract - cannot be deleted')</script>";
          }
          
          $results = $this->getAllTenants();

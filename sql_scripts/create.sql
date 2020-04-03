@@ -16,7 +16,7 @@ CREATE TABLE Owners (
     PRIMARY KEY (OwnerID) );
 
 CREATE TABLE Tenants (
-    TenantID int,
+    TenantID int AUTO_INCREMENT,
     PhoneNum Varchar(30),
     Name Varchar(30),
     PRIMARY KEY (TenantID) );
