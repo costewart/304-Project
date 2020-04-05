@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/css/common.css" media="screen"/>
+        <title>Delete a Tenant</title>
     </head>
     <body>
         <?php $activeTab = 7;

@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/css/common.css" media="screen"/>
+        <title>Rent Stats per City</title>
     </head>
     <body>
         <?php $activeTab = 6;

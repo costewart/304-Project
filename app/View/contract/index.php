@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/css/common.css" media="screen"/>
+        <title>Contracts</title>
     </head>
     <body>
         <?php $activeTab = 4;

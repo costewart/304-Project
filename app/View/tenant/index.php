@@ -4,6 +4,7 @@
         <script type="text/javascript" src="/js/appointment.js"></script>
          <link rel="stylesheet" type="text/css" href="/css/common.css" media="screen"/>
         <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <title>Tenants</title>
     </head>
     <body>
         <?php $activeTab = 1;

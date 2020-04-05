@@ -3,6 +3,7 @@
     <head>
         <script type="text/javascript" src="/js/appointment.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/common.css" media="screen"/>
+        <title>Viewing Appointments</title>
     </head>
     <body>
         <?php $activeTab = 3;

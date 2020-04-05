@@ -20,8 +20,6 @@ class ViewingAppointment
 
         //$name_clause = "";
         //if (!empty($pm_name)) $name_clause = $name_clause . " AND p.Name like '%$pm_name%'";
-        echo $start_time;
-        echo $end_time;
         $time_clause = "";
         if (!empty($start_time)) $time_clause = $time_clause . " AND v.Time >= '$start_time'";
         if (!empty($end_time)) $time_clause = $time_clause . " AND v.Time <= '$end_time'";
