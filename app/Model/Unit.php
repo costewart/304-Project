@@ -17,12 +17,6 @@ class Unit
         return $results;
     }
 
-    public function getAllUnitsWithAddresses() {
-        $sql = "SELECT * FROM Units u, BuildingAddresses ba WHERE u.BuildingID = ba.BuildingID";
-        $results = $this->connection->query($sql);
-        return $results;
-    }
-
     public function filterUnits($type_apt, $type_house, $size, $bed, $bath, $availability) {
         $apt_clause = empty($type_apt) ? " AND u.UnitType != \"apartment\"" : "";
         $house_clause = empty($type_house) ? " AND u.UnitType != \"house\"" : "";
@@ -46,7 +40,7 @@ class Unit
         $avail_clause = "";
         if ($availability == "avail") $avail_clause = " AND c.UnitID IS NULL";
 
-        $sql = "SELECT ba.Streetint, ba.StreetName, ba.PostalCode, u.UnitType, u.UnitSize, u.FloorNum, u.UnitNum, u.Bedrooms, u.Bathrooms
+        $sql = "SELECT ba.Streetint AS StreetNumber, ba.StreetName, ba.PostalCode, u.UnitType, u.UnitSize, u.FloorNum, u.UnitNum, u.Bedrooms, u.Bathrooms
                 FROM BuildingAddresses ba, Units u
                 $avail_join
                 WHERE u.BuildingID = ba.BuildingID
@@ -60,16 +54,4 @@ class Unit
         $results = $this->connection->query($sql);
         return $results;
     }
-
-    public function deleteUnitCascading($unitID) {
-        $sql1 = "DELETE FROM ViewingAppointments WHERE UnitID = $unitID";
-        $sql2 = "DELETE FROM Contracts WHERE UnitID=$unitID";
-        $sql3 = "DELETE FROM ParkingSpots WHERE UnitID=$unitID";
-        $sql4 = "DELETE FROM Units WHERE UnitID=$unitID";
-        $this->connection->query($sql1);
-        $this->connection->query($sql2);
-        $this->connection->query($sql3);
-        $this->connection->query($sql4);
-    }
-
 }

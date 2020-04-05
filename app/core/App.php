@@ -3,7 +3,7 @@
 
 class App
 {
-    protected $controller = "ViewingAppointmentController";
+    protected $controller = "UnitController";
 
     protected $method = "index";
 

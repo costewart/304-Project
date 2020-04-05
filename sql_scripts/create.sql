@@ -56,7 +56,7 @@ CREATE TABLE ViewingAppointments (
     PRIMARY KEY (ApptID),
     FOREIGN KEY (PropertyManagerID) REFERENCES PropertyManagers(PropertyManagerID),
     FOREIGN KEY (UnitID) REFERENCES Units(UnitID),
-    FOREIGN KEY (TenantID) REFERENCES Tenants(TenantID) );
+    FOREIGN KEY (TenantID) REFERENCES Tenants(TenantID) ON DELETE CASCADE);
 
 CREATE TABLE RentPrice (
     RentPrice int,
@@ -79,11 +79,11 @@ CREATE TABLE Contracts (
     PRIMARY KEY (ContractID),
     FOREIGN KEY (RentPrice) REFERENCES RentPrice(RentPrice),
     FOREIGN KEY (Duration, StartDate) REFERENCES ContractDuration(Duration, StartDate),
-    FOREIGN KEY (UnitID) REFERENCES Units(UnitID),
-    FOREIGN KEY (TenantID) REFERENCES Tenants(TenantID) );
+    FOREIGN KEY (UnitID) REFERENCES Units(UnitID) ON DELETE CASCADE,
+    FOREIGN KEY (TenantID) REFERENCES Tenants(TenantID) ON DELETE CASCADE);
 
 CREATE TABLE ParkingSpots (
     Spotint int,
     UnitID int,
     PRIMARY KEY (Spotint,UnitID),
-    FOREIGN KEY (UnitID) REFERENCES Units(UnitID) );
+    FOREIGN KEY (UnitID) REFERENCES Units(UnitID) ON DELETE CASCADE);

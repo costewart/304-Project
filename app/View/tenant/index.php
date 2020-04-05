@@ -4,13 +4,14 @@
         <script type="text/javascript" src="/js/appointment.js"></script>
          <link rel="stylesheet" type="text/css" href="/css/common.css" media="screen"/>
         <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <title>Tenants</title>
     </head>
     <body>
         <?php $activeTab = 1;
         include('../app/View/header.php');  ?>
 
         <h1>Tenants</h1>
-        <h2> Add a new tenant </h2>
+        <h2> Add a new tenant or update existing tenants</h2>
 
         <form class="filter-table" name="form" method="post" action="/Tenant/insert"> 
             <div class="input-group">
@@ -27,24 +28,27 @@
             </div>
         </form>
 
+        <?php $tenants = $data["tenants"]; ?>
         <table class="insert-table">
             <thead>
                 <tr>
-                    <th>Name </th>
-                    <th>Phone Number</th>
-                    <th>Tenant ID</th>
+                    <?php
+                    $fields = $tenants->fetch_fields();
+                    foreach ($fields as $field) {
+                        echo "<th>$field->name</th>";
+                    }
+                    ?>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 if (is_array($data) || is_object($data)) {
-                foreach ($data["tenants"] as $key => $tenant) {
+                foreach ($tenants as $key => $tenant) {
                     echo "<tr><form method='post' >";
-                    echo "<td><div class='input-group'><input type=text name='pname' value='".$tenant["Name"]."'</div></td>";
-                    echo "<td><div class='input-group'><input type=text name='phonenum' value='".$tenant['PhoneNum']."'</div></td>";
-                    echo "<td><div class='input-group'><input type=number name='tid' value='".$tenant['TenantID']."'</div></td>";
-                    echo "<td><div class='input-group'><button formaction='/Tenant/update' class='btn-char' name='update' type=submit onclick='alert();''>Update</button></div></td>";
-                    echo "<td><div class='input-group'><button formaction='/Tenant/delete' class='del_btn' name='delete' type=submit>Delete</button></div></td>";
+                    echo "<td><div class='input-group'><input type=number name='tid' style='background-color: lightgrey;' value='".$tenant['TenantID']."' readonly></div></td>";
+                    echo "<td><div class='input-group'><input type=text name='phonenum' value='".$tenant['PhoneNum']."'></div></td>";
+                    echo "<td><div class='input-group'><input type=text name='pname' value='".$tenant["Name"]."'></div></td>";
+                    echo "<td><div class='input-group'><button formaction='/Tenant/update' class='btn-char' name='update' type=submit;''>Update</button></div></td>";
                     echo "</form></tr>";
                     }
                 }

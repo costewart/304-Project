@@ -3,6 +3,7 @@
     <head>
         <script type="text/javascript" src="/js/appointment.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/common.css" media="screen"/>
+        <title>Owners</title>
     </head>
     <body>
         <?php $activeTab = 2;
@@ -24,25 +25,36 @@
                 <input type="submit" value="Apply">
             </div>
            </form>
-        <table class ="units-table">
-            <thead>
-                <tr>
-                    <th>Owner ID</th>
-                    <th>Phone Number</th>
-                    <th>Owner Name </th>
-                </tr>
-            </thead>
-            <tbody>
+           <?php $owners = $data["owners"]; 
+        
+            if ($owners) {?>
+            <!-- Display all query results as-is -->
+            <table class="units-table">
+                <thead>
+                    <tr>
+                    <?php
+                    $fields = $owners->fetch_fields();
+                    foreach ($fields as $field) {
+                        echo "<th>$field->name</th>";
+                    }
+                    ?>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                while ( $row = $owners->fetch_row() ){
+                    foreach($row as $data) {
+                        echo "<td>$data</td>";
+                    }
+                    echo "</tr>";
+                } ?>
+                </tbody>
+            </table>
             <?php
-            foreach ($data["owners"] as $key => $owner):?>
-                <tr>
-                    <td><?= $owner["OwnerID"] ?></td>
-                    <td><?= $owner["PhoneNum"] ?></td>
-                    <td><?= $owner["Name"] ?></td>
-                </tr>
-            <?php endforeach;?>
-            </tbody>
-        </table>
+            }
+            else {
+                
+            } ?>
 
     </body>
 </html>

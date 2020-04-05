@@ -24,14 +24,10 @@ class TenantController extends Controller
     }
 
     public function update() {
-        $tenants = $this->model->updateTenant();
-        $this->view('tenant/index', [
-            "tenants" => $tenants
-         ]);
-    }
-
-    public function delete() {
-        $tenants = $this->model->deleteTenant();
+        $pname = $_POST["pname"];
+        $phonenum = $_POST["phonenum"];
+        $tid = $_POST["tid"];
+        $tenants = $this->model->updateTenant($pname, $phonenum, $tid);
         $this->view('tenant/index', [
             "tenants" => $tenants
          ]);

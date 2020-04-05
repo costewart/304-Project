@@ -33,10 +33,10 @@ class Tenant
         return $results;
     }
 
-   public function updateTenant() {
+   public function updateTenant($name, $phone, $id) {
        
        // UPDATE sql string
-       $sql = "UPDATE Tenants SET Name='$_POST[pname]', PhoneNum='$_POST[phonenum]' WHERE TenantID='$_POST[TenantID]'";
+       $sql = "UPDATE Tenants SET Name='$name', PhoneNum='$phone' WHERE TenantID='$id'";
 
        if ($this->connection->query($sql) === TRUE) {
         echo "Tenant updated successfully";
@@ -48,17 +48,15 @@ class Tenant
         return $results; 
     }
 
-    public function deleteTenant() {
-       
+    public function deleteTenant($field, $val) {
         // UPDATE sql string
-        $sql = "DELETE FROM Tenants WHERE TenantID='$_POST[tid]'";
+        $sql = "DELETE FROM Tenants WHERE $field='$val'";
  
         if ($this->connection->query($sql) === TRUE) {
          echo "Tenant deleted successfully";
          } else {
          //echo "Error: " . $sql . "<br>" . $this->connection->error;
-         echo "<script type='text/javascript'>alert('Tenant is involved in a Rent Contract - cannot be deleted')</script>";
-         }
+        }
          
          $results = $this->getAllTenants();
          return $results;

@@ -1,11 +1,12 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/css/common.css" media="screen"/>
+        <title>Unit Selection</title>
     </head>
     <body>
         <?php $activeTab = 0;
         include('../app/View/header.php');  ?>
-        <h1>Unit Listing</h1>
+        <h1>Select Units</h1>
         <form class="filter-table" action='/Unit/action' method="post">
             <!-- ACKNOWLEDGEMENT: code snippet for re-populating form values is from
                 https://stackoverflow.com/questions/5198304/how-to-keep-form-values-after-post -->
@@ -56,42 +57,35 @@
                 <input type="submit" value="Apply">
             </div>
         </form>
+        <?php $units = $data["units"]; 
+        
+        if ($units) {?>
+        <!-- Display all query results as-is -->
         <table class="units-table">
             <thead>
                 <tr>
-                    <th>Address</th>
-                    <th>Postal Code</th>
-                    <th>Unit Type</th>
-                    <th>Square Feet</th>
-                    <th>Floor Number</th>
-                    <th>Unit Number</th>
-                    <th>Bedrooms</th>
-                    <th>Bathrooms</th>
-                    <th>Action</th>
+                <?php
+                $fields = $units->fetch_fields();
+                foreach ($fields as $field) {
+                    echo "<th>$field->name</th>";
+                }
+                ?>
                 </tr>
             </thead>
             <tbody>
             <?php
-            foreach ($data["units"] as $key => $unit):?>
-                <tr>
-                    <td><?= $unit["Streetint"] ?> <?= $unit["StreetName"] ?></td>
-                    <td><?= $unit["PostalCode"] ?></td>
-                    <td><?= $unit["UnitType"] ?></td>
-                    <td><?= $unit["UnitSize"] ?></td>
-                    <td><?= $unit["FloorNum"] ?></td>
-                    <td><?= $unit["UnitNum"] ?></td>
-                    <td><?= $unit["Bedrooms"] ?></td>
-                    <td><?= $unit["Bathrooms"] ?></td>
-                    <td >
-                        <form action="/Unit/deleteUnit" method="post">
-                            <input name='unit_id' value='<?= $unit["UnitID"]?>' style='display:none'/>
-                            <input class='action' type='submit' value='delete'/>
-                        </form>
-                    </td>
-                </tr>
-            <?php endforeach;?>
+            while ( $row = $units->fetch_row() ){
+                foreach($row as $data) {
+                    echo "<td>$data</td>";
+                }
+                echo "</tr>";
+            } ?>
             </tbody>
         </table>
-
+        <?php
+        }
+        else {
+            
+        } ?>
     </body>
 </html>
