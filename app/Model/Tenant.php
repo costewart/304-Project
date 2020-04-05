@@ -36,7 +36,7 @@ class Tenant
    public function updateTenant() {
        
        // UPDATE sql string
-       $sql = "UPDATE Tenants SET Name='$_POST[pname]', PhoneNum='$_POST[phonenum]' WHERE TenantID='$_POST[tid]'";
+       $sql = "UPDATE Tenants SET Name='$_POST[pname]', PhoneNum='$_POST[phonenum]' WHERE TenantID='$_POST[TenantID]'";
 
        if ($this->connection->query($sql) === TRUE) {
         echo "Tenant updated successfully";

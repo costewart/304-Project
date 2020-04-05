@@ -21,16 +21,18 @@
                 <label> Phone Number </label>
                 <input type="text" name="phonenum" placeholder="Enter Phone Number" required />
             </div>
+            
             <div class="input-group">
                 <button class="btn-char" name="submit" type="submit">Add Tenant</button>
             </div>
         </form>
-        
+
         <table class="insert-table">
             <thead>
                 <tr>
                     <th>Name </th>
                     <th>Phone Number</th>
+                    <th>Tenant ID</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,7 +42,7 @@
                     echo "<tr><form method='post' >";
                     echo "<td><div class='input-group'><input type=text name='pname' value='".$tenant["Name"]."'</div></td>";
                     echo "<td><div class='input-group'><input type=text name='phonenum' value='".$tenant['PhoneNum']."'</div></td>";
-                    echo "<input type=hidden name=tid value='".$tenant['TenantID']."'>";
+                    echo "<td><div class='input-group'><input type=number name='tid' value='".$tenant['TenantID']."'</div></td>";
                     echo "<td><div class='input-group'><button formaction='/Tenant/update' class='btn-char' name='update' type=submit onclick='alert();''>Update</button></div></td>";
                     echo "<td><div class='input-group'><button formaction='/Tenant/delete' class='del_btn' name='delete' type=submit>Delete</button></div></td>";
                     echo "</form></tr>";
