@@ -33,7 +33,7 @@ class ViewingAppointmentController extends Controller
             "u.UnitNum, ",
             "u.UnitID = v.UnitID "),
             array("BuildingAddresses ba",
-            "ba.Streetint, ba.StreetName, ba.PostalCode, ",
+            "ba.Streetint AS StreetNum, ba.StreetName, ba.PostalCode, ",
             "u.BuildingID = ba.BuildingID "));
         }
         if (!empty($_POST['start_time'])) {
