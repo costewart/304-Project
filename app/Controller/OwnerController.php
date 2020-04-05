@@ -16,8 +16,8 @@ class OwnerController extends Controller
     }
 
     public function OwnersAll(){
-        if(isset($_POST['unit_type'])){
-            $owners = $this->model->getOwnersWithUnitType($_POST['unit_type']);
+        if(isset($_POST['all_unit_types'])){
+            $owners = $this->model->getOwnersByUnitTypes($_POST['all_unit_types']);
             $this->view('owner/index',["owners" => $owners]);
         } else{
             $owners = $this->model->getAllOwners();

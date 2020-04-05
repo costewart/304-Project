@@ -16,23 +16,18 @@ class Owner
         return $results;
     }
 
-    public function getOwnersWithUnitType($unit_type) {
+    public function getOwnersByUnitTypes($require_all_unit_types) {
+        $flagClause = $require_all_unit_types == "true" ? "Not" : "";
         $sql = "Select * 
                 From Owners O
-                Where Not Exists
-	                (Select UnitID
-	                From Units u1 WHERE u1.OwnerID = O.OwnerID
+                Where $flagClause Exists
+	                (Select UnitType
+	                From Units u1 WHERE u1.UnitType
 	                NOT IN 
-	                (Select UnitID
-	                From Units u2 WHERE u2.OwnerID = O.OwnerID
-	                AND u2.UnitType = '$unit_type'));";
+	                (Select UnitType
+	                From Units u2 WHERE u2.OwnerID = O.OwnerID));";
         $results = $this->connection->query($sql);
         return $results;
-
-
-
     }
-
-
 
 }

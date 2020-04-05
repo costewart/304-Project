@@ -36,10 +36,7 @@ class ViewingAppointment
                 $time_clause"
                ;
         $results = $connection->query($sql);
-//        print_r($results);
-//        die;
         return $results;
-
     }
 
 }
