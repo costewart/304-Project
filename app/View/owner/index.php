@@ -3,12 +3,13 @@
     <head>
         <script type="text/javascript" src="/js/appointment.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/common.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="/css/style.css" media="screen"/>
         <title>Owners</title>
     </head>
     <body>
         <?php $activeTab = 2;
         include('../app/View/header.php');  ?>
-        <h1>Owners Listing</h1>
+        <h1 class="header">Owners Listing</h1>
         <form class="filter-table" action='/Owner/OwnersAll' method="post" style="max-width: 250px;">
             <!-- ACKNOWLEDGEMENT: code snippet for re-populating form values is from
                 https://stackoverflow.com/questions/5198304/how-to-keep-form-values-after-post -->

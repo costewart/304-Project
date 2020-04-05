@@ -3,12 +3,13 @@
     <head>
         <script type="text/javascript" src="/js/appointment.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/common.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="/css/style.css" media="screen"/>
         <title>Viewing Appointments</title>
     </head>
     <body>
         <?php $activeTab = 3;
         include('../app/View/header.php');  ?>
-        <h1>Viewing Appointment Information</h1>
+        <h1 class="header">Viewing Appointment Information</h1>
         <form class="filter-table" action='/ViewingAppointment/action' method="post">
             <!-- ACKNOWLEDGEMENT: code snippet for re-populating form values is from
                 https://stackoverflow.com/questions/5198304/how-to-keep-form-values-after-post -->

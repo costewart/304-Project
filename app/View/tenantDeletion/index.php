@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/css/common.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="/css/style.css" media="screen"/>
         <title>Delete a Tenant</title>
     </head>
     <body>
@@ -26,7 +27,7 @@
         
         if ($tenants) {?>
         <!-- Display all query results as-is -->
-        <table class="tenants-table">
+        <table class="tenant-table">
             <thead>
                 <tr>
                 <?php

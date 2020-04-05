@@ -10,7 +10,7 @@
         <?php $activeTab = 1;
         include('../app/View/header.php');  ?>
 
-        <h1>Tenants</h1>
+        <h1 class="header">Tenants</h1>
         <h2> Add a new tenant </h2>
 
         <form class="filter-table" name="form" method="post" action="/Tenant/insert"> 

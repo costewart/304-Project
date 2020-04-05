@@ -2,12 +2,13 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/css/common.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="/css/style.css" media="screen"/>
         <title>Contracts</title>
     </head>
     <body>
         <?php $activeTab = 4;
         include('../app/View/header.php');  ?>
-        <h2>All Contracts:</h2>
+        <h2 class="header">All Contracts:</h2>
         <h4>Choose what information you'd like to see...</h4>
         <form class="filter-table" action='/Contract/contractProjection' method="post">
             <div class="filter-option">

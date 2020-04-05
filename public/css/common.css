@@ -77,3 +77,7 @@ ul.horizontal li {
     margin: 10px;
     padding: 3px;
 }
+
+.header {
+    font-family: Arial, Helvetica, sans-serif;
+}
