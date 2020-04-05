@@ -48,17 +48,15 @@ class Tenant
         return $results; 
     }
 
-    public function deleteTenant() {
-       
+    public function deleteTenant($field, $val) {
         // UPDATE sql string
-        $sql = "DELETE FROM Tenants WHERE TenantID='$_POST[tid]'";
+        $sql = "DELETE FROM Tenants WHERE $field='$val'";
  
         if ($this->connection->query($sql) === TRUE) {
          echo "Tenant deleted successfully";
          } else {
          //echo "Error: " . $sql . "<br>" . $this->connection->error;
-         echo "<script type='text/javascript'>alert('Tenant is involved in a Rent Contract - cannot be deleted')</script>";
-         }
+        }
          
          $results = $this->getAllTenants();
          return $results;

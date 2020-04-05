@@ -41,8 +41,7 @@
                     echo "<td><div class='input-group'><input type=text name='pname' value='".$tenant["Name"]."'</div></td>";
                     echo "<td><div class='input-group'><input type=text name='phonenum' value='".$tenant['PhoneNum']."'</div></td>";
                     echo "<input type=hidden name=tid value='".$tenant['TenantID']."'>";
-                    echo "<td><div class='input-group'><button formaction='/Tenant/update' class='btn-char' name='update' type=submit onclick='alert();''>Update</button></div></td>";
-                    echo "<td><div class='input-group'><button formaction='/Tenant/delete' class='del_btn' name='delete' type=submit>Delete</button></div></td>";
+                    echo "<td><div class='input-group'><button formaction='/Tenant/update' class='btn-char' name='update' type=submit ;''>Update</button></div></td>";
                     echo "</form></tr>";
                     }
                 }

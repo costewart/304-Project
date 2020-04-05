@@ -29,11 +29,4 @@ class TenantController extends Controller
             "tenants" => $tenants
          ]);
     }
-
-    public function delete() {
-        $tenants = $this->model->deleteTenant();
-        $this->view('tenant/index', [
-            "tenants" => $tenants
-         ]);
-    }
 }

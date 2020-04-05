@@ -25,13 +25,4 @@ class UnitController extends Controller
             "units" => $units
          ]);
     }
-
-    public function deleteUnit() {
-        $unitID = ($_POST['unit_id']);
-        $this->model->deleteUnitCascading($unitID);
-        $units = $this->model->getAllUnitsWithAddresses();
-        $this->view('unit/index', [
-            "units" => $units
-        ]);
-    }
 }
