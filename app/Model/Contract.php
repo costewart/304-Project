@@ -1,7 +1,7 @@
 <?php
 
 require_once 'Connection.php';
-class Stats
+class Contract
 {
     protected $conn;
     protected $connection;
@@ -22,6 +22,28 @@ class Stats
                     AND c.StartDate = cd.StartDate
                     AND ba.PostalCode = pc.PostalCode
                 ORDER BY ba.BuildingID, u.UnitID";
+        $results = $this->connection->query($sql);
+        return $results;
+    }
+
+    public function contractProjection($args) {
+        $cols = "";
+        foreach($args as $arg) {
+            if (!empty($arg)) {
+                $cols .= "$arg, ";
+            }
+        }
+        $cols = rtrim($cols, ', ');
+        $sql = "SELECT $cols
+        FROM Contracts c, Units u, BuildingAddresses ba, ContractDuration cd, PostalCodes pc, Owners o, Tenants t
+        WHERE c.UnitID = u.unitID
+            AND t.TenantID = c.TenantID
+            AND o.OwnerID = u.OwnerID
+            AND u.BuildingID = ba.BuildingID
+            AND c.Duration = cd.Duration
+            AND c.StartDate = cd.StartDate
+            AND ba.PostalCode = pc.PostalCode
+        ORDER BY ba.BuildingID, u.UnitID";
         $results = $this->connection->query($sql);
         return $results;
     }
