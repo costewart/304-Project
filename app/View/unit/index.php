@@ -56,35 +56,35 @@
                 <input type="submit" value="Apply">
             </div>
         </form>
+        <?php $units = $data["units"]; 
+        
+        if ($units) {?>
+        <!-- Display all query results as-is -->
         <table class="units-table">
             <thead>
                 <tr>
-                    <th>Address</th>
-                    <th>Postal Code</th>
-                    <th>Unit Type</th>
-                    <th>Square Feet</th>
-                    <th>Floor Number</th>
-                    <th>Unit Number</th>
-                    <th>Bedrooms</th>
-                    <th>Bathrooms</th>
+                <?php
+                $fields = $units->fetch_fields();
+                foreach ($fields as $field) {
+                    echo "<th>$field->name</th>";
+                }
+                ?>
                 </tr>
             </thead>
             <tbody>
             <?php
-            foreach ($data["units"] as $key => $unit):?>
-                <tr>
-                    <td><?= $unit["Streetint"] ?> <?= $unit["StreetName"] ?></td>
-                    <td><?= $unit["PostalCode"] ?></td>
-                    <td><?= $unit["UnitType"] ?></td>
-                    <td><?= $unit["UnitSize"] ?></td>
-                    <td><?= $unit["FloorNum"] ?></td>
-                    <td><?= $unit["UnitNum"] ?></td>
-                    <td><?= $unit["Bedrooms"] ?></td>
-                    <td><?= $unit["Bathrooms"] ?></td>
-                </tr>
-            <?php endforeach;?>
+            while ( $row = $units->fetch_row() ){
+                foreach($row as $data) {
+                    echo "<td>$data</td>";
+                }
+                echo "</tr>";
+            } ?>
             </tbody>
         </table>
-
+        <?php
+        }
+        else {
+            
+        } ?>
     </body>
 </html>

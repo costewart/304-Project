@@ -9,14 +9,14 @@ class UnitController extends Controller
     }
 
     public function index() {
-        $units = $this->model->getAllUnitsWithAddresses();
+        $units = $this->model->getAllUnits();
 //
         $this->view('unit/index', [
            "units" => $units
         ]);
     }
 
-        public function action() {
+    public function action() {
         $apt = isset($_POST['type-apt']) ? $_POST['type-apt'] : "";
         $house = isset($_POST['type-house']) ? $_POST['type-house'] : "";
         $units = $this->model->filterUnits($apt, $house, $_POST["size"],

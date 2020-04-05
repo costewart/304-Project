@@ -18,7 +18,7 @@
             foreach($colOptions as $col) { ?>
                 <input type="checkbox" id="<?php echo $col ?>" name="<?php echo $col ?>" value="1" 
                         <?php if(isset($_POST[$col])) echo "checked='checked'"; ?> >
-                <label for="type-apt"><?php echo $col ?></label><br>
+                <label for="<?php echo $col ?>"><?php echo $col ?></label><br>
             <?php } ?>
             <div class="button-wrapper">
                 <input type="submit" value="Get Info">
@@ -55,4 +55,5 @@
         else {
             
         } ?>
+    </body>
 </html>

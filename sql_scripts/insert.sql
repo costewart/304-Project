@@ -19,7 +19,7 @@ INSERT INTO Owners VALUES ( 9, '6042481734', 'Sam Alora');
 INSERT INTO Owners VALUES ( 10, '6042121900', 'Patrick Lee');
 
 INSERT INTO Tenants VALUES (NULL, '6047811234', 'Peter Victor');
-INSERT INTO Tenants VALUES (NULL, '6047881567', 'Michelle Ho');
+INSERT INTO Tenants VALUES (NULL, '6047881567', 'Amy Ho');
 INSERT INTO Tenants VALUES (NULL, '6043151235', 'Scott Wang');
 INSERT INTO Tenants VALUES (NULL, '3042481734', 'Alora Sadi');
 INSERT INTO Tenants VALUES (NULL, '8892121900', 'Lim Kim');
@@ -63,11 +63,11 @@ INSERT INTO Units VALUES (18, '301', 1,1,675, 'apartment', 'N',   3,      'Y',  
 INSERT INTO Units VALUES (19, '4' ,  2,1,750, 'apartment', 'N',   12,     'Y',    1, 9);
 INSERT INTO Units VALUES (20, '1',   2,2,800, 'apartment', 'N',   1,      'Y',    3, 9);
 
-INSERT INTO ViewingAppointments VALUES ( 2,  STR_TO_DATE('12:30 02-01-2020', '%H:%i %m-%d-%Y'), 1, 1, 12);
-INSERT INTO ViewingAppointments VALUES ( 20, STR_TO_DATE('10:00 03-01-2020', '%H:%i %m-%d-%Y'), 4, 2, 11);
-INSERT INTO ViewingAppointments VALUES ( 12, STR_TO_DATE('14:00 04-01-2020', '%H:%i %m-%d-%Y'), 3, 3, 11);
-INSERT INTO ViewingAppointments VALUES ( 29, STR_TO_DATE('17:00 05-11-2020', '%H:%i %m-%d-%Y'), 5, 4, 12);
-INSERT INTO ViewingAppointments VALUES ( 99, STR_TO_DATE('14:10 05-01-2020', '%H:%i %m-%d-%Y'), 1, 5, 13);
+INSERT INTO ViewingAppointments VALUES ( 2,  STR_TO_DATE('12:30 02-21-2020', '%H:%i %m-%d-%Y'), 1, 1, 12);
+INSERT INTO ViewingAppointments VALUES ( 20, STR_TO_DATE('10:00 03-21-2020', '%H:%i %m-%d-%Y'), 4, 2, 11);
+INSERT INTO ViewingAppointments VALUES ( 12, STR_TO_DATE('14:00 04-22-2020', '%H:%i %m-%d-%Y'), 3, 3, 11);
+INSERT INTO ViewingAppointments VALUES ( 29, STR_TO_DATE('17:00 05-13-2020', '%H:%i %m-%d-%Y'), 5, 4, 12);
+INSERT INTO ViewingAppointments VALUES ( 99, STR_TO_DATE('14:10 05-31-2020', '%H:%i %m-%d-%Y'), 1, 5, 13);
 
 INSERT INTO RentPrice VALUES (1200, 600);
 INSERT INTO RentPrice VALUES (1500, 750);
