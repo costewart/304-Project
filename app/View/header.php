@@ -6,6 +6,8 @@
             ["/Owner/index", "Owner"],
             ["/ViewingAppointment/index", "PropertyManager"],
             ["/Contract/index", "Contract"],
+            ["/AvailableUnits/index", "AvailableUnits"],
+            ["/CityStats/index", "CityStats"],
         ];
         foreach ($options as $index => $option): ?>
             <li>

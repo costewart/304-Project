@@ -11,21 +11,6 @@ class Contract
         $this->connection = $conn->openConnection();
     }
 
-    public function getAllContractDetails() {
-        $sql = "SELECT o.Name AS OwnerName, c.StartDate, cd.EndDate, ba.Streetint, ba.StreetName,
-                        ba.PostalCode, u.UnitNum, u.UnitType, c.RentPrice, pc.City
-                FROM Contracts c, Units u, BuildingAddresses ba, ContractDuration cd, PostalCodes pc, Owners o
-                WHERE c.UnitID = u.unitID
-                    AND o.OwnerID = u.OwnerID
-                    AND u.BuildingID = ba.BuildingID
-                    AND c.Duration = cd.Duration
-                    AND c.StartDate = cd.StartDate
-                    AND ba.PostalCode = pc.PostalCode
-                ORDER BY ba.BuildingID, u.UnitID";
-        $results = $this->connection->query($sql);
-        return $results;
-    }
-
     public function contractProjection($args) {
         $cols = "";
         foreach($args as $arg) {
@@ -48,20 +33,26 @@ class Contract
         return $results;
     }
 
-    public function getAvgRentPerBuilding() {
-        $sql = "SELECT ba.Streetint, ba.StreetName, ba.PostalCode, pc.City,
-                        AVG(c.RentPrice) AS AvgRent
-                FROM Contracts c, Units u, BuildingAddresses ba, ContractDuration cd, PostalCodes pc
-                WHERE c.UnitID = u.unitID
-                    AND u.BuildingID = ba.BuildingID
-                    AND c.Duration = cd.Duration
-                    AND c.StartDate = cd.StartDate
-                    AND ba.PostalCode = pc.PostalCode
-                GROUP BY ba.BuildingID";
+    public function countAvailableUnits() {
+        $sql = "SELECT COUNT(*) AS AvailableUnits
+                FROM Units u LEFT JOIN Contracts c ON c.UnitID = u.UnitID
+                WHERE c.ContractID IS NULL";
         $results = $this->connection->query($sql);
         return $results;
     }
 
+    public function avgRentPerCity() {
+        $sql = "SELECT pc.City, AVG(c.RentPrice) AS AvgRent
+                FROM Contracts c, PostalCodes pc, BuildingAddresses ba, Units u
+                WHERE c.UnitID = u.UnitID
+                    AND ba.BuildingID = u.BuildingID
+                    AND pc.PostalCode = ba.PostalCode
+                GROUP BY pc.City";
+        $results = $this->connection->query($sql);
+        return $results;
+    }
+
+    // More complication query -- apparently not needed anymore?
     public function getAvgIncomePerOwner() {
         $sql = "SELECT AVG(totalRentFromBdg) AS AvgIncome, t.OwnerID, t.Name
                 FROM (
