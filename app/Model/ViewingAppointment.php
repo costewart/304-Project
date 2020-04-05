@@ -35,7 +35,6 @@ class ViewingAppointment
 
         $results = $connection->query($sql);
         return $results;
-
     }
 
 }
