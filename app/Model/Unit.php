@@ -17,6 +17,16 @@ class Unit
         return $results;
     }
 
+    public function deleteUnits($field, $val) {
+        $sql = "DELETE FROM Units WHERE $field='$val'";
+        if ($this->connection->query($sql) === TRUE) {
+         echo "Unit deleted successfully";
+         }
+         
+         $results = $this->getAllUnits();
+         return $results;
+    }
+
     public function filterUnits($type_apt, $type_house, $size, $bed, $bath, $availability) {
         $apt_clause = empty($type_apt) ? " AND u.UnitType != \"apartment\"" : "";
         $house_clause = empty($type_house) ? " AND u.UnitType != \"house\"" : "";

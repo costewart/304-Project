@@ -55,7 +55,7 @@ CREATE TABLE ViewingAppointments (
     TenantID int NOT NULL,
     PRIMARY KEY (ApptID),
     FOREIGN KEY (PropertyManagerID) REFERENCES PropertyManagers(PropertyManagerID),
-    FOREIGN KEY (UnitID) REFERENCES Units(UnitID),
+    FOREIGN KEY (UnitID) REFERENCES Units(UnitID) ON DELETE CASCADE,
     FOREIGN KEY (TenantID) REFERENCES Tenants(TenantID) ON DELETE CASCADE);
 
 CREATE TABLE RentPrice (

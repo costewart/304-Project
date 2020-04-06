@@ -1,7 +1,6 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/css/common.css" media="screen"/>
-        <title>Unit Selection</title>
     </head>
     <body>
         <?php $activeTab = 0;
