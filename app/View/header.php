@@ -9,6 +9,7 @@
             ["/AvailableUnits/index", "AvailableUnits"],
             ["/CityStats/index", "CityStats"],
             ["/TenantDeletion/index", "TenantDeletion"],
+            ["/UnitDeletion/index", "UnitDeletion"],
         ];
         foreach ($options as $index => $option): ?>
             <li>

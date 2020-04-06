@@ -49,17 +49,13 @@ class Tenant
     }
 
     public function deleteTenant($field, $val) {
-        // UPDATE sql string
         $sql = "DELETE FROM Tenants WHERE $field='$val'";
  
         if ($this->connection->query($sql) === TRUE) {
          echo "Tenant deleted successfully";
-         } else {
-         //echo "Error: " . $sql . "<br>" . $this->connection->error;
-        }
+         }
          
          $results = $this->getAllTenants();
          return $results;
-         
      }
 }
