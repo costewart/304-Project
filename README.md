@@ -12,7 +12,7 @@ Initially planned as a platform that caters to landlord and tenant convenience, 
 
 ## App Design
 
-![Test Image 1](https://github.com/costewart/JAAN_AdoptApp/blob/master/Screen%20Shot%202020-04-13%20at%204.56.32%20PM.png)
+![Test Image 1](https://github.com/costewart/HousingHelper-304Project/blob/master/Screen%20Shot%202020-05-11%20at%2011.25.26%20AM.png)
 	
 ## Technologies
 Project is created with:
